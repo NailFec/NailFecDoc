@@ -1,0 +1,197 @@
+site_name: NailFec Doc
+site_description: NailFec Doc
+site_author: NailFec
+# site_url: nailfec.net
+strict: false
+
+copyright: Copyright &copy; 2024 NailFec
+
+theme:
+  name: material
+  features:
+    - content.tooltips
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.code.annotate
+    - content.code.select
+    - content.tabs.link
+    - content.action.edit
+    - navigation.instant
+  icon:
+    annotation: material/arrow-right-circle
+  language: zh
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  include_search_page: false
+  search_index_only: true
+  font:
+    text: 'Fira Sans'
+    code: 'Fira Mono'
+  # favicon: 'favicon.ico'
+  # icon:
+  #   logo: 'material/school'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      pygments_lang_class: true
+  - pymdownx.highlight:
+      auto_title: true
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.highlight:
+      linenums_style: pymdownx-inline
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.highlight:
+      line_spans: __span
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+
+markdown_extensions:
+  - abbr
+  - attr_list
+  - pymdownx.snippets
+  - admonition
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: ""
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.progressbar
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+extra:
+  disqus: 'NailFec'
+  copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
+  pagetime: 'on'
+  social:
+    - icon: fontawesome/brands/github
+      link: https://fosstodon.org/@squidfunk
+      name: GitHub
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:nailfec17@gmail.com
+      name: Email
+  analytics:
+    provider: google
+    property: G-S0CCJPHNHS
+    feedback:
+      title: 为此页面的内容评价
+      ratings:
+        - icon: material/thumb-up-outline
+          name: 此页面的内容不错
+          data: 1
+          note: >-
+            感谢您的认可！<br>
+            您也可以通过 QQ 进一步联系：<a href="https://qm.qq.com/q/O3I7D4nL4y">3581804879</a>
+        - icon: material/thumb-down-outline
+          name: 此页面的内容有待改进
+          data: 0
+          note: >- 
+            感谢您的反馈！
+            您可以发送邮件到 <a href="mailto:nailfec17@gmail.com">nailfec17@gmail.com</a> 以提供进一步的反馈。
