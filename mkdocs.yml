@@ -1,7 +1,7 @@
 site_name: NailFec Doc
 site_description: NailFec Doc
 site_author: NailFec
-# site_url: nailfec.net
+site_url: https://nailfec.github.io/NailFecDoc/
 strict: false
 
 copyright: Copyright &copy; 2024 NailFec
@@ -25,7 +25,7 @@ theme:
     - content.action.edit
     - navigation.instant
   icon:
-    annotation: material/arrow-right-circle
+    annotation: material/information-slab-circle
   language: zh
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -48,9 +48,10 @@ theme:
     text: 'Fira Sans'
     code: 'Fira Mono'
   # favicon: 'favicon.ico'
-  # icon:
-  #   logo: 'material/school'
+  icon:
+    logo: 'octicons/file-code-16'
 
+# the following are copied from OI Wiki
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -167,18 +168,18 @@ extra_css:
 
 extra:
   disqus: 'NailFec'
-  copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
+  copyright: '<a href="https://github.com/NailFec/NailFecDoc/blob/main/LICENSE.md">AGPLv3 与 NailFec 附加条款</a>'
   pagetime: 'on'
   social:
     - icon: fontawesome/brands/github
-      link: https://fosstodon.org/@squidfunk
+      link: https://github.com/NailFec
       name: GitHub
     - icon: fontawesome/solid/paper-plane
       link: mailto:nailfec17@gmail.com
       name: Email
   analytics:
     provider: google
-    property: G-S0CCJPHNHS
+    property: G-YSYNV495RP
     feedback:
       title: 为此页面的内容评价
       ratings:
