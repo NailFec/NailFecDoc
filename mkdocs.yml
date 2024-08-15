@@ -198,7 +198,7 @@ extra:
 
 nav:
 - NailFec Doc:
-    - '首页': index.md
+    - 首页: index.md
     - 协议.md
     # - 免责声明.md
 - 算法笔记:
