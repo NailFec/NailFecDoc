@@ -1,0 +1,292 @@
+# 问题 G: 最长回文子串B
+
+传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=6) | [P3805 【模板】manacher](https://www.luogu.com.cn/problem/P3805)
+
+求「一个字符串的最长回文子串」是一道经典的字符串算法问题，此文也列于板块 [题目分享 - 最长回文子串问题](https://nailfec.github.io/NailFecDoc/题目分享/最长回文子串问题/)。
+
+## 题目描述
+
+### 原题面
+
+给出一个字符串 $S$，求 $S$ 中最长回文串的长度。
+
+字符串长度为 $n\:(1\le n\le 1000)$。
+
+### 输入要求
+
+输入一个字符串 $S$。
+
+### 输出要求
+
+一行，一个整数，表示最长回文子串的长度。
+
+### 样例
+
+<div class="grid" markdown>
+
+```text
+PATZJUJZTACCBCC
+```
+
+```text
+9
+```
+
+</div>
+
+## 解法
+
+解法和时间复杂度： (1)
+{ .annotate }
+
+1.  此处时间复杂度为该解法的**算法部分**的时间复杂度，不是严谨的**整题**的时间复杂度
+
+<!---->
+- 法1：枚举所有子串 $O(n^3)$
+- 法2：枚举中心点 $O(n^2)$
+- 法3：枚举中心点 + 二分 $O(n\log n)$
+- 法4：二维动态规划 $O(n^2)$
+- 法5：一维动态规划 $O(n^2)$
+- 法6：Manacher 算法 $O(n)$
+- 法7：回文自动机 $O(n)$
+
+### 法1：枚举所有子串
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string s;
+    getline(cin, s);
+    int len = s.length();
+    int ans = 1;
+    for(int i = 0; i < len - 1; i ++)
+        for(int j = i + 1; j < len; j ++) {
+            bool can = true;
+            int a = i - 1, b = j + 1;
+            while((++ a) < (-- b))
+                if(s[a] != s[b]) {
+                    can = false;
+                    break;
+                }
+            if(can) ans = max(ans, j - i + 1);
+        }
+    printf("%d", ans);
+    return 0;
+}
+```
+
+### 法2：枚举中心点
+
+略，见法3。
+
+### 法3：枚举中心点 + 二分
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXn = 1.1e7 + 9;
+const int BASE = 13131, MOD = 1e9 + 9;
+int h1[2 * MAXn], h2[2 * MAXn], p[2 * MAXn];
+
+int fsha1(int l, int r) {
+    l ++; r ++;
+    return (h1[r] - 1ll * h1[l - 1] * p[r - l + 1] % MOD + MOD) % MOD;
+}
+int fsha2(int l, int r) {
+    l ++; r ++;
+    return (h2[r] - 1ll * h2[l - 1] * p[r - l + 1] % MOD + MOD) % MOD;
+}
+
+int main() {
+    string s1 = "#";
+    char c;
+    while(scanf("%c", &c) != EOF) {
+        s1.push_back(c);
+        s1.push_back('#');
+    }
+    string s2(s1.rbegin(), s1.rend());
+    int len = s1.length();
+    h1[0] = h2[0] = p[0] = 1;
+    for(int i = 1; i <= len; i ++) {
+        p[i] = (1ll * p[i - 1] * BASE) % MOD;
+        h1[i] = (1ll * h1[i - 1] * BASE + s1[i - 1]) % MOD;
+        h2[i] = (1ll * h2[i - 1] * BASE + s2[i - 1]) % MOD;
+    }
+    int ans = 0;
+    for(int i = 1, j = len - 2; i <= len - 2; i ++, j --) {
+        // i: 正向中心点; j: 逆向中心点
+        int a = 0, b = min({len / 2, i, j});
+        while(a < b) {
+            int m = (a + b + 1) >> 1;
+            if(fsha1(i - m, i - 1) == fsha2(j - m, j - 1)) a = m;
+            else b = m - 1;
+        }
+        if(ans < a) ans = a;
+    }
+    printf("%d", ans);
+    return 0;
+}
+```
+
+### 法4：二维动态规划
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXn = 1000 + 9;
+bool dp[MAXn][MAXn];
+
+int main() {
+    string s;
+    getline(cin, s);
+    int len = s.length();
+    for(int i = 0; i < len; i ++)
+        dp[i][i] = true;
+    int ans = 1;
+    for(int j = 1; j < len; j ++)
+        for(int i = 0; i < j; i ++) {
+            dp[i][j] = (s[i] == s[j] && (dp[i + 1][j - 1] || j - i + 1 <= 3));
+            if(dp[i][j] && ans < (j - i + 1))
+                ans = j - i + 1;
+        }
+    printf("%d", ans);
+}
+```
+
+### 法5：一维动态规划
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXn = 1000 + 9;
+int dp[MAXn];
+
+int main() {
+    string s;
+    getline(cin, s);
+    int len = s.length();
+    s = "#" + s;
+    int ans = 1;
+    dp[1] = 1;
+    for(int j = 2; j <= len; j ++) {
+        if(s[j] == s[j - dp[j - 1] - 1]) dp[j] = dp[j - 1] + 2;
+        else for(int i = j - dp[j - 1]; i <= j; i ++) {
+            int l = i, r = j;
+            bool can = true;
+            while(l <= r && can) {
+                can = s[l] == s[r];
+                l ++;
+                r --;
+            }
+            if(can) {
+                dp[j] = j - i + 1;
+                break;
+            }
+        }
+        ans = max(ans, dp[j]);
+    }
+    printf("%d", ans);
+}
+```
+
+### 法6：Manacher 算法
+
+```cpp title="【模板】Manacher 算法"
+#include<bits/stdc++.h>
+#define int long long int
+using namespace std;
+const int MAXn = 1.1e7 + 9;
+string os, s;
+int d[(MAXn << 1) + 9];
+
+signed main() {
+    getline(cin, os);
+    s = "@";
+    for(char c : os)
+        s.push_back('#'),
+        s.push_back(c);
+    s.push_back('#');
+    int len = s.length() - 1, ans = 1;
+    for(int t = 1, r = 0, m = 0; t <= len; t ++) {
+        if(t <= r) d[t] = min(d[(m << 1) - t], r - t + 1);
+        while(s[t - d[t]] == s[t + d[t]]) d[t] ++;
+        if(d[t] + t > r) r = d[t] + t - 1, m = t;
+        ans = max(ans, d[t] - 1);
+    }
+    printf("%lld", ans);
+    return 0;
+}
+```
+
+### 法7：回文自动机
+
+注：此部分代码借鉴自 OI wiki。
+
+```cpp
+#include <bits/stdc++.h>
+#define lli long long int
+using namespace std;
+const int MAXn = 4e3 + 9;
+int sz, tot, last;
+int cnt[MAXn], ch[MAXn][128], len[MAXn], fail[MAXn];
+char s[MAXn], d[MAXn];
+
+// 建立一个新节点，长度为 l
+int node(int l) {
+    sz ++;
+    memset(ch[sz], 0, sizeof(ch[sz]));
+    len[sz] = l;
+    fail[sz] = cnt[sz] = 0;
+    return sz;
+}
+
+// 初始化
+void clear() {
+    sz = -1;
+    last = 0;
+    s[tot = 0] = '$';
+    node(0);
+    node(-1);
+    fail[0] = 1;
+}
+
+// 找后缀回文
+int getfail(int x) {
+    while (s[tot - len[x] - 1] != s[tot]) x = fail[x];
+    return x;
+}
+
+// 建树
+void insert(char c) {
+    s[++tot] = c;
+    int now = getfail(last);
+    if(!ch[now][c - 'a']) {
+        int x = node(len[now] + 2);
+        fail[x] = ch[getfail(fail[now])][c - 'a'];
+        ch[now][c - 'a'] = x;
+    }
+    last = ch[now][c - 'a'];
+    cnt[last] ++;
+}
+
+lli solve() {
+    lli ans = 0;
+    for(int i = sz; i >= 0; i--)
+        cnt[fail[i]] += cnt[i];
+    for(int i = 1; i <= sz; i++)
+        ans = max(ans, 1ll * len[i]);
+    return ans;
+}
+
+int main() {
+    clear();
+    scanf("%s", d + 1);
+    for(int i = 1; d[i]; i++) {
+        insert(d[i]);
+    }
+    printf("%lld", solve());
+    return 0;
+}
+```

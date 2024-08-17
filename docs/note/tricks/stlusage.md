@@ -154,6 +154,10 @@ ${\color{Gray} \texttt{CHA}}$ `stl1.swap(stl2)`
 
 后进先出（LIFO）的容器，默认是对[deque](#deque-双端队列)的包装
 
+!!! note "from: 一扶苏一"
+
+    STL 提供了 [stack](#ul-stack-栈) 作为封装好的栈，但是其底层内存分配逻辑是 [deque](#deque-双端队列)，常数极大。一般而言，如果希望用 STL 实现 [stack](#ul-stack-栈)，可以考虑使用 [vector](#vector-向量)。
+
 #### queue 队列
 
 先进先出（FIFO）的容器，默认是对[deque](#deque-双端队列)的包装
@@ -166,7 +170,7 @@ ${\color{Gray} \texttt{CHA}}$ `stl1.swap(stl2)`
 
 ![difference-of-front-back-begin-end-and-iterator](stlrqyfhz/iterator.jpg)
 
-[jpg file](stlrqyfhz/iterator.jpg) | [png file](stlrqyfhz/iterator.png) | [svg file](stlrqyfhz/iterator.svg) | [picture © 2024 NailFec](https://nailfec.github.io/NailFecDoc/)
+[jpg file](stlrqyfhz/iterator.jpg) | [png file](stlrqyfhz/iterator.png) | [svg file](stlrqyfhz/iterator.svg) | [picture © 2024 NailFec](https://nailfec.github.io/NailFecDoc/%E5%8D%8F%E8%AE%AE/)
 
 ${\color{Orange} \texttt{CHA}}$ `advance(it, x)`  
 $x$ 为正则向后移动，$x$ 为负则向前移动
