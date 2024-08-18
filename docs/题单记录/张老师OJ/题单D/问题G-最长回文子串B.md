@@ -1,8 +1,8 @@
 # 问题 G: 最长回文子串B
 
-传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=6) | [P3805 【模板】manacher](https://www.luogu.com.cn/problem/P3805)
+传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=6) | [洛谷 P3805 【模板】manacher](https://www.luogu.com.cn/problem/P3805)
 
-求「一个字符串的最长回文子串」是一道经典的字符串算法问题，此文也列于板块 [题目分享 - 最长回文子串问题](https://nailfec.github.io/NailFecDoc/题目分享/最长回文子串问题/)。
+求「一个字符串的最长回文子串」是一道经典的字符串算法问题，此文也列于板块 [题目分享 - 最长回文子串问题](../../../../题目分享/最长回文子串问题/)。
 
 ## 题目描述
 
@@ -222,7 +222,7 @@ signed main() {
 
 ### 法7：回文自动机
 
-注：此部分代码借鉴自 OI wiki。
+注：此部分代码借鉴自 [OI wiki](https://oi-wiki.org/string/pam/)。
 
 ```cpp
 #include <bits/stdc++.h>
