@@ -10,7 +10,7 @@ Almost prime numbers are the non-prime numbers which are divisible by only a sin
 
 In this problem your job is to write a program which finds out the number of almost prime numbers within a certain range.
 
-!!! note
+!!! info
 
     Wikipedia 关于“几乎是素数数”的介绍：[Almost prime - Wikipedia](https://en.wikipedia.org/wiki/Almost_prime)
 

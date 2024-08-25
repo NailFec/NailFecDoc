@@ -15,7 +15,7 @@
 
 [view.jpg](wys/image.jpg) | [ori.png](wys/image.png) | [ori.svg](wys/image.svg)
 
-!!! warning
+!!! warning ""
 
     特别地，对于负数的右移运算：
 
@@ -50,7 +50,7 @@ int main(){
 }
 ```
 
-!!! warning
+!!! warning ""
 
     同样地，**特别注意**右移对于负数的取整方式，负数的左移：
 
@@ -157,9 +157,9 @@ public:
 - 消去一个数二进制最右侧的 `1`： `a&(a-1)`；
 - 获取一个数二进制最右侧的 `1`： `a&(~a+1)` 或 `a&(-a)`（即 `lowbit(x)`）。
 
-!!! note
+!!! info ""
 
-    `-a` 表示 `a` 的补码
+    `-a` 表示 `a` 的补码。
 
 ```cpp
 class Solution {
@@ -241,7 +241,7 @@ public:
 
 洛谷链接：[P1226 【模板】快速幂](https://www.luogu.com.cn/problem/P1226)
 
-???+ note "AC code"
+???+ info "AC code"
 
     ```cpp title="快速幂模板" hl_lines="10-14"
     #include <bits/stdc++.h>
@@ -267,7 +267,7 @@ public:
 
 洛谷链接：[P10118 『STA - R4』And](https://www.luogu.com.cn/problem/P10118)
 
-???+ note "STD 题解"
+???+ info "STD 题解"
 
     from: [『STA - R4』 T1 题解](https://www.luogu.com.cn/article/9lrde6zo)
 

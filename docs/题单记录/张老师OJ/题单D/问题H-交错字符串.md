@@ -1,6 +1,6 @@
 # 问题 H: 交错字符串
 
-传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=7) | [LeetCode interleaving-string](https://leetcode.cn/problems/interleaving-string/description/)
+传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=7) | 字符串 Ad-Hoc
 
 ## 题目描述
 

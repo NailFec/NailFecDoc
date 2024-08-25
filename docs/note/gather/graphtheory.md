@@ -2,7 +2,7 @@
 
 ## 存图
 
-!!! note
+!!! info
 
     难度【4】，辞典P60，深进P0，一本通P0，[OIwiki/图的存储](https://oi-wiki.org/graph/save/)
 
@@ -65,7 +65,7 @@ void visit(int a) {
 
 ## 遍历
 
-!!! note
+!!! info
 
     难度【4~5】，辞典P88，深进P0，一本通P0，[OIwiki/dfs](https://oi-wiki.org/graph/dfs/) & [OIwiki/bfs](https://oi-wiki.org/graph/bfs/)
 
@@ -103,7 +103,7 @@ while(!que.empty()) {
 
 ## 最短路
 
-!!! note
+!!! info
 
     难度【6~7】，辞典P194，深进P167，一本通P119，[OIwiki](https://oi-wiki.org/graph/shortest-path/)
 

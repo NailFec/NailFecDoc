@@ -1,6 +1,6 @@
 # 问题 G: 最长回文子串B
 
-传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=6) | [洛谷 P3805 【模板】manacher](https://www.luogu.com.cn/problem/P3805)
+传送门：[ZWGOJ](http://81.68.64.169/problem.php?cid=1012&pid=6) | [洛谷 P3805 【模板】manacher](https://www.luogu.com.cn/problem/P3805) | 字符串 Ad-Hoc
 
 求「一个字符串的最长回文子串」是一道经典的字符串算法问题，此文也列于板块 [题目分享 - 最长回文子串问题](../../../../题目分享/最长回文子串问题/)。
 

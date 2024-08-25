@@ -135,14 +135,14 @@ ${\color{Gray} \texttt{CHA}}$ `stl1.swap(stl2)`
 `unordered_set` `unordered_multiset`  
 元素无序，只关心元素是否存在
 
-!!! note "关于 set 和 unordered_set"
+!!! info "关于 set 和 unordered_set"
 
     如果使用 set 或 unordered_set 会被卡常，可以尝试换成另一种。
 
 `unordered_map` `unordered_multimap`  
 键 (key) 无序，只关心键与值的对应关系
 
-!!! note "关于 map 和 multimap"
+!!! info "关于 map 和 multimap"
 
     unordered_map 并没有对 pair 作适配，因此不能方便地使用 unordered_map 存放双哈希值。
 
@@ -154,7 +154,7 @@ ${\color{Gray} \texttt{CHA}}$ `stl1.swap(stl2)`
 
 后进先出（LIFO）的容器，默认是对[deque](#deque-双端队列)的包装
 
-!!! note "from: 一扶苏一"
+!!! info "from: 一扶苏一"
 
     STL 提供了 [stack](#ul-stack-栈) 作为封装好的栈，但是其底层内存分配逻辑是 [deque](#deque-双端队列)，常数极大。一般而言，如果希望用 STL 实现 [stack](#ul-stack-栈)，可以考虑使用 [vector](#vector-向量)。
 
