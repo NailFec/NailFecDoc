@@ -97,8 +97,6 @@ int dp[MAXn][MAXw], ans[MAXn][MAXw];
 bool can[MAXn];
  
 signed main() {
-    // freopen("test/travel10.in", "r", stdin);
-    // freopen("test/travel10.out", "w", stdout);
     for(int i = 0; i <= MAXn - 3; i ++)
         for(int j = 0; j <= MAXw - 3; j ++)
             ans[i][j] = LLONG_MAX - 1;
@@ -165,3 +163,189 @@ signed main() {
     return 0;
 }
 ```
+
+## 关于无环图
+
+??? note "生成无环图"
+    
+    使用以下 python 代码可以生成一张有向无环图。为保证题目有解，生成的图是联通的。
+    
+    ```python
+    import networkx as nx
+    import random
+
+    def generate_dag(n, m):
+        G = nx.DiGraph()
+        nodes = list(range(1, n + 1))
+        G.add_nodes_from(nodes)
+
+        # Step 1: Create a basic connected structure (linear chain)
+        for i in range(1, n):
+            G.add_edge(i, i + 1, weight=random.randint(1, 10))
+
+        # Step 2: Add remaining edges while keeping the graph acyclic
+        while len(G.edges) < m:
+            u, v = random.sample(nodes, 2)
+            if not G.has_edge(u, v):
+                G.add_edge(u, v, weight=random.randint(1, 10))
+                if not nx.is_directed_acyclic_graph(G):
+                    G.remove_edge(u, v)
+        
+        return G
+
+    n = 995
+    m = 1080
+    w = 872
+    G = generate_dag(n, m)
+
+    edge_list = list(G.edges(data=False))
+    random.shuffle(edge_list)
+
+    with open('output.txt', 'w') as f:
+        f.write(f"{n} {m} {w}\n")
+        
+        for i in range(1, n + 1):
+            f.write(f"{random.randint(1, 30)} {random.randint(1, 30)}\n")
+
+        for u, v in edge_list:
+            f.write(f"{u} {v} {random.randint(1, 30)}\n")
+    ```
+
+??? note "检验无环图"
+
+    使用 dfs 或 拓扑算法皆可检验一张图是否是无环的。
+
+    ```cpp title="使用 dfs 检验无环性"
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    bool dfs(int node, vector<int>& visited, vector<vector<int>>& adj) {
+        visited[node] = 1;
+        for (int neighbor : adj[node]) {
+            if (visited[neighbor] == 1) {
+                return true;
+            } else if (visited[neighbor] == 0 && dfs(neighbor, visited, adj)) {
+                return true;
+            }
+        }
+        visited[node] = 2;
+        return false;
+    }
+
+    bool hasCycleDFS(int n, vector<pair<int, int>>& edges) {
+        vector<vector<int>> adj(n + 1);
+        for (auto& edge : edges) {
+            adj[edge.first].push_back(edge.second);
+        }
+
+        vector<int> visited(n + 1, 0);
+
+        for (int i = 1; i <= n; ++i) {
+            if (visited[i] == 0 && dfs(i, visited, adj)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int main() {
+        freopen("output.txt", "r", stdin);
+
+        int n, m, tmp;
+        cin >> n >> m >> tmp;
+
+        for(int i = 1; i <= n; i ++)
+            cin >> tmp, cin >> tmp;
+        
+
+        vector<pair<int, int>> edges(m);
+        for (int i = 0; i < m; ++i) {
+            int a, b;
+            cin >> a >> b >> tmp;
+            edges[i] = {a, b};
+        }
+
+        if (hasCycleDFS(n, edges)) {
+            cout << "Graph has a cycle (detected by DFS)." << endl;
+        } else {
+            cout << "Graph does not have a cycle (detected by DFS)." << endl;
+        }
+
+        // if (hasCycleTopo(n, edges)) {
+        //     cout << "Graph has a cycle (detected by Topological Sort)." << endl;
+        // } else {
+        //     cout << "Graph does not have a cycle (detected by Topological Sort)." << endl;
+        // }
+
+        return 0;
+    }
+    ```
+
+    ```cpp title="使用 拓扑排序 检验无环性"
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    bool hasCycleTopo(int n, vector<pair<int, int>>& edges) {
+        vector<vector<int>> adj(n + 1);
+        vector<int> inDegree(n + 1, 0);
+
+        for (auto& edge : edges) {
+            adj[edge.first].push_back(edge.second);
+            inDegree[edge.second]++;
+        }
+
+        queue<int> q;
+        for (int i = 1; i <= n; ++i) {
+            if (inDegree[i] == 0) {
+                q.push(i);
+            }
+        }
+
+        int count = 0;
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+            count++;
+
+            for (int neighbor : adj[node]) {
+                if (--inDegree[neighbor] == 0) {
+                    q.push(neighbor);
+                }
+            }
+        }
+
+        return count != n;
+    }
+
+    int main() {
+        freopen("output.txt", "r", stdin);
+
+        int n, m, tmp;
+        cin >> n >> m >> tmp;
+
+        for(int i = 1; i <= n; i ++)
+            cin >> tmp, cin >> tmp;
+        
+
+        vector<pair<int, int>> edges(m);
+        for (int i = 0; i < m; ++i) {
+            int a, b;
+            cin >> a >> b >> tmp;
+            edges[i] = {a, b};
+        }
+
+        // if (hasCycleDFS(n, edges)) {
+        //     cout << "Graph has a cycle (detected by DFS)." << endl;
+        // } else {
+        //     cout << "Graph does not have a cycle (detected by DFS)." << endl;
+        // }
+
+        if (hasCycleTopo(n, edges)) {
+            cout << "Graph has a cycle (detected by Topological Sort)." << endl;
+        } else {
+            cout << "Graph does not have a cycle (detected by Topological Sort)." << endl;
+        }
+
+        return 0;
+    }
+    ```
