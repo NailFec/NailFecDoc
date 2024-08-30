@@ -205,6 +205,9 @@ nav:
       # - 免责声明.md
   - 算法笔记:
       - 模板:
+          - 基本:
+              - note/templates/基本/快速IO.md
+              - note/templates/基本/二分.md
           - 数学:
               - note/templates/数学/检查质数.md
               - note/templates/数学/埃式筛.md
@@ -215,9 +218,6 @@ nav:
               - note/templates/数学/常系数齐次线性递推.md
               - note/templates/数学/高斯消元法.md
               - note/templates/数学/FFT乘法.md
-          - 基本:
-              - note/templates/基本/快速IO.md
-              - note/templates/基本/二分.md
           - 数据结构:
               - note/templates/数据结构/ST表.md
               - note/templates/数据结构/树状数组.md
@@ -232,12 +232,40 @@ nav:
       - 小技巧:
           - note/tricks/bitoper.md
           - note/tricks/stlusage.md
+          - note/tricks/数组的重复赋值.md
           - note/tricks/pc.md
   - 题单记录:
       - 张老师OJ:
-          # - 题单A:
+          - 题单A:
+              - 题单记录/张老师OJ/题单A/问题A-宝藏探险.md
+              - 题单记录/张老师OJ/题单A/问题B-挑战赛.md
+              - 题单记录/张老师OJ/题单A/问题C-最长顺眼子串.md
+              - 题单记录/张老师OJ/题单A/问题D-超级弹珠.md
+              - 题单记录/张老师OJ/题单A/问题E-相邻数之和.md
+              - 题单记录/张老师OJ/题单A/问题F-蛋糕装盒.md
+              - 题单记录/张老师OJ/题单A/问题G-宇宙航行.md
           # - 题单B:
+          #     - 题单记录/张老师OJ/题单B/问题A-素数间隔.md
+          #     - 题单记录/张老师OJ/题单B/问题B-渔业丰收.md
+          #     - 题单记录/张老师OJ/题单B/问题C-扑克牌.md
+          #     - 题单记录/张老师OJ/题单B/问题D-直播获奖.md
+          #     - 题单记录/张老师OJ/题单B/问题E-和为给定数.md
+          #     - 题单记录/张老师OJ/题单B/问题F-数数.md
+          #     - 题单记录/张老师OJ/题单B/问题G-棋盘.md
+          #     - 题单记录/张老师OJ/题单B/问题H-城市导航B.md
+          #     - 题单记录/张老师OJ/题单B/问题I-编辑距离.md
+          #     - 题单记录/张老师OJ/题单B/问题J-扑克牌游戏.md
           # - 题单C:
+          #     - 题单记录/张老师OJ/题单C/问题A-解方程.md
+          #     - 题单记录/张老师OJ/题单C/问题B-狮吼总值.md
+          #     - 题单记录/张老师OJ/题单C/问题C-小聪明.md
+          #     - 题单记录/张老师OJ/题单C/问题D-等边三角形.md
+          #     - 题单记录/张老师OJ/题单C/问题E-最大的矩形纸片.md
+          #     - 题单记录/张老师OJ/题单C/问题F-最长重复子串.md
+          #     - 题单记录/张老师OJ/题单C/问题G-木材仓库.md
+          #     - 题单记录/张老师OJ/题单C/问题H-星座统计.md
+          #     - 题单记录/张老师OJ/题单C/问题I-字符串变换2.md
+          #     - 题单记录/张老师OJ/题单C/问题J-牛栏问题.md
           - 题单D:
               - 题单记录/张老师OJ/题单D/问题A-喝汽水.md
               - 题单记录/张老师OJ/题单D/问题B-递增序列.md
