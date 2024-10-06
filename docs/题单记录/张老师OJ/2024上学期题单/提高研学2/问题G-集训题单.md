@@ -158,6 +158,11 @@ int main() {
 }
 ```
 
+使用 **卢卡斯定理** 快速计算组合数。详见：
+
+- OIwiki：[卢卡斯定理 - OIwiki](https://oi-wiki.org/math/number-theory/lucas/)
+- 洛谷：[P3807 【模板】卢卡斯定理/Lucas 定理](https://www.luogu.com.cn/problem/P3807)
+
 以下代码原码转载自 [iai.sh.cn上“张老师”的题解](https://www.iai.sh.cn/contribution/7687)。
 
 ```cpp title="©张老师 from iai.sh.cn"

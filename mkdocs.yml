@@ -211,6 +211,7 @@ nav:
               - note/templates/数学/检查质数.md
               - note/templates/数学/埃式筛.md
               - note/templates/数学/线性筛.md
+              # - note/templates/数学/计算组合数.md
               - note/templates/数学/扩展欧几里得.md
               - note/templates/数学/快速幂.md
               - note/templates/数学/矩阵乘法与快速幂.md
