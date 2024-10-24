@@ -222,7 +222,13 @@ nav:
               - note/templates/数据结构/ST表.md
               - note/templates/数据结构/树状数组.md
               - note/templates/数据结构/线段树.md
+          - 树上问题:
+              - note/templates/树上问题/LCA.md
           - 字符串:
+              - note/templates/字符串/字符串哈希.md
+              - note/templates/字符串/KMP.md
+              - note/templates/字符串/失配树.md
+              - note/templates/字符串/字典树.md
               - note/templates/字符串/manacher.md
               - note/templates/字符串/回文自动机.md
           - 动态规划:
